@@ -4,23 +4,22 @@ import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server.{Directives, Route}
 import org.lizeo.backend.core.json.JacksonSupport
 import org.lizeo.backend.core.rejections.ApiRejection
-import org.lizeo.backend.domains.dealers.services.{DealerService, DealerServiceInMemory}
+import org.lizeo.backend.domains.dealers.services.{DealerService, DealerServiceES, DealerServiceInMemory}
 import org.lizeo.backend.domains.stations.queries.UpdateStationLocationQuery
-import org.lizeo.backend.domains.stations.services.{StationService, StationServiceInMemory}
+import org.lizeo.backend.domains.stations.services.{StationService, StationServiceES, StationServiceInMemory}
 
 /**
   * Created by nico on 02/10/17.
   */
 object StationRoutes extends Directives with JacksonSupport {
-   val stationService: StationService = StationServiceInMemory
-   val dealerService: DealerService = DealerServiceInMemory
+  private val stationService: StationService = StationServiceES
+  private val dealerService: DealerService = DealerServiceES
 
   private val stationRoutes = pathPrefix("stations")
 
   private val getStations: Route = {
     pathEndOrSingleSlash & complete(stationService.getStations)
   }
-
 
   private val getStationById: Route = path("id" / Segment) { stationId =>
     pathEndOrSingleSlash {

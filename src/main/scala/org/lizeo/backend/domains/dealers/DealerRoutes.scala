@@ -4,17 +4,15 @@ import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server.Route
 import org.lizeo.backend.core.rejections.ApiRejection
 import org.lizeo.backend.core.routes.DefaultAppRoute
-import org.lizeo.backend.domains.dealers.services.{DealerService, DealerServiceInMemory}
-import org.lizeo.backend.domains.stations.StationRoutes.{complete, path, post, stationService, uploadedFile}
-import org.lizeo.backend.domains.stations.StationsFromCsv
-import org.lizeo.backend.domains.stations.services.{StationService, StationServiceInMemory}
+import org.lizeo.backend.domains.dealers.services.{DealerService, DealerServiceES, DealerServiceInMemory}
+import org.lizeo.backend.domains.stations.services.{StationService, StationServiceES, StationServiceInMemory}
 
 /**
   * Created by nico on 02/10/17.
   */
 object DealerRoutes extends DefaultAppRoute {
-  private val stationService: StationService = StationServiceInMemory
-  private val dealerService: DealerService = DealerServiceInMemory
+  private val stationService: StationService = StationServiceES
+  private val dealerService: DealerService = DealerServiceES
 
   private val getStationsByDealer: Route = (get & path(Segment / "stations")) { dealerId =>
     if(dealerService.existsDealerId(dealerId)) {
@@ -23,7 +21,6 @@ object DealerRoutes extends DefaultAppRoute {
       reject(ApiRejection(s"Missing dealerId $dealerId", StatusCodes.NotFound))
     }
   }
-
 
   private val initFromCsv: Route = (post & path("csv") & uploadedFile("csv")) { case (_, file) =>
     complete {
