@@ -12,4 +12,10 @@ object Config extends WithLogging {
   // Server configuration
   private val serverConfig = conf.getConfig("server")
   val serverPort: Int = serverConfig.getInt("port")
+
+  // ElasticSearch configuration
+  private val elasticSearchConfig = conf.getConfig("elasticsearch")
+  val esUrlDomain: String = elasticSearchConfig.getString("serverDomain")
+  val esPort: Int = elasticSearchConfig.getInt("port")
+  val esClusterName: String = elasticSearchConfig.getString("clusterName")
 }
