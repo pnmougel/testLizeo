@@ -1,8 +1,6 @@
 package org.lizeo.backend.stations
 
-import java.io.File
-
-import akka.http.scaladsl.model.{ContentTypes, Multipart, StatusCodes}
+import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.testkit.ScalatestRouteTest
 import org.lizeo.backend.core.json.JacksonSupport
 import org.lizeo.backend.domains.stations.{StationModel, StationRoutes}
