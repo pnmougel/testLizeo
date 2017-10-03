@@ -1,0 +1,33 @@
+dealer_id,name,dealer_type
+1086,RTC,1
+1085,Reifen Helm,1
+700,MLX,1
+699,Top Service Team,1
+698,EFR,1
+239,BMW,1
+236,Mercedes-Benz,1
+220,Pit-stop,2
+93,Premio,2
+91,Euromaster,2
+90,ATU,2
+85,Point S,1
+82,Vergölst,2
+63,Opel,1
+62,Audi,1
+61,Fiat,1
+60,Ford,1
+32,Siligom,2
+29,Peugeot,1
+26,Feu Vert,2
+23,Profil +,2
+19,Speedy,2
+15,First Stop,2
+14,Motrio,1
+13,Renault,1
+11,Midas,1
+9,Citroën,1
+7,Norauto,2
+5,Eurorepar,1
+3,Eurotyre,1
+2,Volkswagen,1
+1,Euromaster_test,2

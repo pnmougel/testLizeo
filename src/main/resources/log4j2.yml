@@ -1,0 +1,27 @@
+Configuration:
+  status: warn
+
+
+  Appenders:
+    Console:
+      name: Console
+      target: SYSTEM_OUT
+      PatternLayout:
+        Pattern: "%6level > %date{ISO8601} > %-20.20c{1} > %msg%n"
+    File:
+      name: InfoLogs
+      fileName: logs/app.log
+      PatternLayout:
+        pattern: "%6level > %date{ISO8601} > %-20.20c{1} > %msg%n"
+  Loggers:
+    Root:
+      AppenderRef:
+      - ref: Console
+        level: debug
+
+    logger:
+    - name: org.lizeo
+      level: debug
+      AppenderRef:
+      - ref: Console
+      - ref: InfoLogs
