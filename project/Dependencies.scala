@@ -6,6 +6,7 @@ object Dependencies {
   lazy val akkaHttpVersion = "10.0.10"
   lazy val scalaCsvVersion = "1.3.5"
   lazy val log4jVersion = "2.9.0"
+  lazy val elastic4sVersion = "5.1.5"
 
   val appDeps = Seq(
     // Akka core
@@ -23,6 +24,8 @@ object Dependencies {
     "org.apache.logging.log4j" % "log4j-api" % log4jVersion,
     "org.apache.logging.log4j" % "log4j-slf4j-impl" % log4jVersion,
     "com.typesafe.akka" %% "akka-slf4j" % akkaVersion,
+
+    "com.sksamuel.elastic4s" %% "elastic4s-core" % elastic4sVersion,
 
     // Json
     "com.typesafe.akka" % "akka-http-jackson_2.12" % akkaHttpVersion,
